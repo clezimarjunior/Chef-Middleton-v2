@@ -224,6 +224,117 @@ footer{background:var(--ink);padding:56px 52px 32px}
 .rv.show{opacity:1;transform:none}
 .rv2{opacity:0;transform:translateY(24px);transition:opacity 0.85s ease 0.2s,transform 0.85s ease 0.2s}
 .rv2.show{opacity:1;transform:none}
+
+/* MOBILE NAV OVERLAY (hidden on desktop) */
+.mob-menu{display:none}
+/* NAV-RIGHT / HAMBURGER (desktop base) */
+.nav-right{display:flex;align-items:center;gap:28px}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:6px;flex-shrink:0}
+.ham span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;border-radius:1px}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.ham.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ============================
+   MOBILE — max-width: 768px
+   ============================ */
+@media(max-width:768px){
+  /* LANG BAR */
+  .lang-bar{padding:6px 20px}
+  .lang-tagline{display:none}
+
+  /* NAV */
+  nav{top:26px;padding:0 20px;height:60px}
+  .logo-mark{width:38px;height:38px}
+  .logo-text-chef{font-size:8px;letter-spacing:4px}
+  .logo-text-name{font-size:17px}
+  .logo-text-sub{display:none}
+  .nav-right{gap:0}
+  .nav-right>.nav-cta{padding:10px 18px;font-size:9px;letter-spacing:2px;margin-right:14px}
+  .ham{display:flex;margin-left:4px}
+  .nav-links{display:none !important}
+  .mob-menu{display:none;flex-direction:column;align-items:center;justify-content:center;gap:36px;position:fixed;inset:0;z-index:9999;background:#fcfbf1}
+  .mob-menu.open{display:flex}
+  .mob-menu a{font-family:'Lato',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--ink2);text-decoration:none;font-weight:400;transition:color 0.2s}
+  .mob-menu a:hover{color:var(--green)}
+  .mob-menu .mob-cta{background:var(--green);color:#fff !important;padding:14px 40px;font-weight:700;border-radius:2px;letter-spacing:2px}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;margin-top:86px;min-height:auto}
+  .hero-left{padding:44px 24px 36px}
+  .hero h1{font-size:clamp(46px,13vw,68px);letter-spacing:-1px}
+  .hero-text{max-width:100%}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  .hero-watermark{font-size:180px;left:10px;bottom:-8px}
+  .hero-right img{min-height:280px}
+  .hstat{padding:12px 8px}
+  .hstat-n{font-size:18px}
+  .hstat-l{font-size:7px;letter-spacing:1.5px}
+
+  /* BRAND BAND */
+  .brand-band{padding:14px 20px}
+
+  /* SECTIONS */
+  section{padding:56px 24px}
+
+  /* HISTORIA */
+  .historia{grid-template-columns:1fr;gap:36px;padding:56px 24px}
+  .hist-img-wrap::before,.hist-img-wrap::after{display:none}
+  .hist-img-wrap img{aspect-ratio:4/3}
+  .career-badge{left:0;bottom:16px}
+  .hist-text .sec-title{font-size:clamp(22px,6vw,32px)}
+
+  /* FILOSOFIA */
+  .pillars{grid-template-columns:1fr}
+  .pillar{padding:36px 28px}
+
+  /* EXPERIENCIAS */
+  .exp-cards{grid-template-columns:1fr}
+
+  /* MENU */
+  .menu-tabs{flex-wrap:wrap;justify-content:flex-start;gap:8px;border-bottom:none;margin-bottom:28px;max-width:100%}
+  .mtab{border:1px solid var(--border2);border-radius:2px;padding:10px 18px;font-size:9px;margin-bottom:0;border-bottom:1px solid var(--border2)}
+  .mtab.on{border-color:var(--green);background:var(--green-light)}
+  .course-block{grid-template-columns:1fr;gap:8px;padding:22px 0}
+  .course-label::after{display:none}
+  .course-item{font-size:14px}
+
+  /* GALLERY */
+  .gallery{display:block}
+  .gallery-header{padding:48px 24px 32px}
+  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;gap:3px}
+  .gm1{grid-column:1/3;grid-row:1/2}
+  .gm2{grid-column:1/2;grid-row:2/3}
+  .gm3{grid-column:2/3;grid-row:2/3}
+  .gm4{grid-column:1/2;grid-row:3/4}
+  .gm5{grid-column:2/3;grid-row:3/4}
+
+  /* EXP MIDDLETON */
+  .exp-mid{padding:56px 24px}
+  .exp-mid-inner{grid-template-columns:1fr;gap:36px}
+  .exp-mid-img{aspect-ratio:4/3;max-height:300px}
+
+  /* QUOTE */
+  .quote-band{padding:56px 24px}
+  .qb-watermark{font-size:180px}
+  .qb-text{font-size:clamp(16px,4.5vw,24px)}
+
+  /* RESERVAS */
+  .reservas{padding:56px 24px}
+  .reservas-inner{grid-template-columns:1fr;gap:40px}
+  .form-grid{grid-template-columns:1fr}
+  .ff{grid-column:1}
+
+  /* FOOTER */
+  footer{padding:48px 24px 24px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+
+  /* WHATSAPP */
+  .wa-btn{bottom:20px;right:16px}
+  .wa-icon{width:46px;height:46px}
+  .wa-icon svg{width:22px;height:22px}
+}
 </style>
 </head>
 <body>
@@ -254,14 +365,28 @@ footer{background:var(--ink);padding:56px 52px 32px}
       <span class="logo-text-sub">Experiencias privadas</span>
     </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#historia" class="t" data-es="Historia" data-en="Story">Historia</a></li>
-    <li><a href="#experiencias" class="t" data-es="Experiencias" data-en="Experiences">Experiencias</a></li>
-    <li><a href="#menus" class="t" data-es="Menú" data-en="Menu">Menú</a></li>
-    <li><a href="#galeria" class="t" data-es="Galería" data-en="Gallery">Galería</a></li>
-    <li><a href="#reservas" class="nav-cta t" data-es="Reservar" data-en="Book now">Reservar</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#historia" class="t" data-es="Historia" data-en="Story">Historia</a></li>
+      <li><a href="#experiencias" class="t" data-es="Experiencias" data-en="Experiences">Experiencias</a></li>
+      <li><a href="#menus" class="t" data-es="Menú" data-en="Menu">Menú</a></li>
+      <li><a href="#galeria" class="t" data-es="Galería" data-en="Gallery">Galería</a></li>
+    </ul>
+    <a href="#reservas" class="nav-cta t" data-es="Reservar" data-en="Book now">Reservar</a>
+    <button class="ham" id="ham" aria-label="Menú" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mob-menu" id="mob-menu">
+  <a href="#historia" class="t" data-es="Historia" data-en="Story">Historia</a>
+  <a href="#experiencias" class="t" data-es="Experiencias" data-en="Experiences">Experiencias</a>
+  <a href="#menus" class="t" data-es="Menú" data-en="Menu">Menú</a>
+  <a href="#galeria" class="t" data-es="Galería" data-en="Gallery">Galería</a>
+  <a href="#reservas" class="mob-cta t" data-es="Reservar" data-en="Book now">Reservar</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -531,6 +656,24 @@ footer{background:var(--ink);padding:56px 52px 32px}
 </a>
 
 <script>
+function closeNav(){
+  document.getElementById('ham').classList.remove('open');
+  document.getElementById('mob-menu').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleNav(){
+  const ham=document.getElementById('ham');
+  const mob=document.getElementById('mob-menu');
+  const opening=!mob.classList.contains('open');
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow=opening?'hidden':'';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('#mob-menu a').forEach(function(a){
+    a.addEventListener('click',closeNav);
+  });
+});
 function setLang(l,btn){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');

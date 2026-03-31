@@ -41,8 +41,8 @@ nav{position:fixed;top:30px;left:0;right:0;z-index:100;padding:0 52px;display:fl
 .nav-cta:hover{background:var(--ink) !important}
 
 /* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;margin-top:102px}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:72px 64px 72px 72px;background:var(--bg);position:relative}
+.hero{min-height:80vh;display:grid;grid-template-columns:1fr 1fr;margin-top:102px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:52px 56px 52px 72px;background:var(--bg);position:relative}
 /* Big decorative "M" watermark */
 .hero-watermark{position:absolute;bottom:-20px;left:40px;font-family:'Playfair Display',serif;font-size:320px;color:rgba(156,154,54,0.04);line-height:1;pointer-events:none;font-weight:700;user-select:none}
 .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px}
@@ -58,8 +58,11 @@ nav{position:fixed;top:30px;left:0;right:0;z-index:100;padding:0 52px;display:fl
 .btn-primary:hover{background:transparent;color:var(--green)}
 .btn-secondary{padding:14px 36px;border:2px solid var(--border2);color:var(--ink2);background:transparent;text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;transition:all 0.3s;border-radius:2px;display:inline-block}
 .btn-secondary:hover{border-color:var(--green);color:var(--green)}
-.hero-right{position:relative;overflow:hidden;background:var(--bg2)}
-.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:600px}
+.hero-right{position:relative;overflow:hidden;background:var(--ink)}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 8%;display:block;min-height:400px}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-video-overlay{position:absolute;inset:0;background:rgba(20,18,12,0.45);z-index:1}
+.hero-stat-strip{z-index:2}
 /* Stat badge */
 .hero-stat-strip{position:absolute;bottom:0;left:0;right:0;background:var(--ink);display:flex}
 .hstat{flex:1;padding:16px 20px;border-right:1px solid rgba(255,255,255,0.08);text-align:center}
@@ -104,7 +107,7 @@ section{padding:88px 52px}
 .pillar::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
 .pillar:hover{background:#fff}
 .pillar:hover::after{transform:scaleX(1)}
-.pillar-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(156,154,54,0.08);line-height:1;margin-bottom:16px;display:block}
+.pillar-num{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:rgba(156,154,54,0.35);line-height:1;margin-bottom:16px;display:block}
 .pillar h3{font-family:'Playfair Display',serif;font-size:21px;font-weight:500;color:var(--ink);margin-bottom:12px}
 .pillar p{font-size:13px;color:var(--ink2);line-height:1.85}
 
@@ -212,6 +215,25 @@ footer{background:var(--ink);padding:56px 52px 32px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px}
 
+/* VIDEO PLAY BUTTON */
+.hero-play{position:absolute;top:24px;left:24px;z-index:2;cursor:pointer;display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.35);background:rgba(20,18,12,0.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:11px 18px 11px 14px;border-radius:2px;text-decoration:none;transition:all 0.3s}
+.hero-play:hover{background:rgba(20,18,12,0.55);border-color:rgba(255,255,255,0.6)}
+.hero-play-icon{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color 0.3s}
+.hero-play-icon svg{width:8px;height:8px;fill:#fff;margin-left:2px}
+.hero-play:hover .hero-play-icon{border-color:#fff}
+.hero-play-text{display:flex;flex-direction:column;gap:1px}
+.hero-play-text em{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:rgba(255,255,255,0.9);line-height:1.2;font-weight:400}
+.hero-play-text span{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-family:'Lato',sans-serif;font-weight:700}
+
+/* VIDEO MODAL */
+.vmodal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,0.88);backdrop-filter:blur(6px)}
+.vmodal.open{display:flex}
+.vmodal-inner{position:relative;width:90vw;max-width:1100px;aspect-ratio:16/9}
+.vmodal-inner video{width:100%;height:100%;display:block;border:1px solid rgba(255,255,255,0.08)}
+.vmodal-close{position:absolute;top:-44px;right:0;background:none;border:none;color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'Lato',sans-serif;font-weight:700;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+.vmodal-close:hover{color:#fff}
+.vmodal-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
 /* WHATSAPP */
 .wa-btn{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;align-items:center;gap:0;text-decoration:none}
 .wa-label{background:var(--ink);color:#fff;padding:10px 16px;font-size:11px;letter-spacing:1px;border-radius:2px 0 0 2px;white-space:nowrap;font-weight:700;opacity:0;transform:translateX(8px);transition:all 0.3s;pointer-events:none}
@@ -254,6 +276,10 @@ footer{background:var(--ink);padding:56px 52px 32px}
   .ham{display:flex;margin-left:4px}
   .nav-links{display:none !important}
   .mob-menu{display:none;flex-direction:column;align-items:center;justify-content:center;gap:36px;position:fixed;inset:0;z-index:9999;background:#fcfbf1}
+  .mob-menu-close{position:absolute;top:20px;right:20px;background:none;border:none;cursor:pointer;width:36px;height:36px}
+  .mob-menu-close span{display:block;width:22px;height:2px;background:var(--ink);border-radius:1px;position:absolute;top:50%;left:50%;margin-left:-11px;margin-top:-1px}
+  .mob-menu-close span:nth-child(1){transform:rotate(45deg)}
+  .mob-menu-close span:nth-child(2){transform:rotate(-45deg)}
   .mob-menu.open{display:flex}
   .mob-menu a{font-family:'Lato',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--ink2);text-decoration:none;font-weight:400;transition:color 0.2s}
   .mob-menu a:hover{color:var(--green)}
@@ -280,7 +306,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
   /* HISTORIA */
   .historia{grid-template-columns:1fr;gap:36px;padding:56px 24px}
   .hist-img-wrap::before,.hist-img-wrap::after{display:none}
-  .hist-img-wrap img{aspect-ratio:4/3}
+  .hist-img-wrap img{aspect-ratio:unset;height:auto}
   .career-badge{left:0;bottom:16px}
   .hist-text .sec-title{font-size:clamp(22px,6vw,32px)}
 
@@ -312,7 +338,8 @@ footer{background:var(--ink);padding:56px 52px 32px}
   /* EXP MIDDLETON */
   .exp-mid{padding:56px 24px}
   .exp-mid-inner{grid-template-columns:1fr;gap:36px}
-  .exp-mid-img{aspect-ratio:4/3;max-height:300px}
+  .exp-mid-img{aspect-ratio:unset;max-height:none}
+  .exp-mid-img img{height:auto;object-fit:contain;object-position:center}
 
   /* QUOTE */
   .quote-band{padding:56px 24px}
@@ -381,6 +408,9 @@ footer{background:var(--ink);padding:56px 52px 32px}
 
 <!-- MOBILE MENU OVERLAY -->
 <div class="mob-menu" id="mob-menu">
+  <button class="mob-menu-close" onclick="closeNav()" aria-label="Fechar menu">
+    <span></span><span></span>
+  </button>
   <a href="#historia" class="t" data-es="Historia" data-en="Story">Historia</a>
   <a href="#experiencias" class="t" data-es="Experiencias" data-en="Experiences">Experiencias</a>
   <a href="#menus" class="t" data-es="Menú" data-en="Menu">Menú</a>
@@ -406,7 +436,16 @@ footer{background:var(--ink);padding:56px 52px 32px}
     </div>
   </div>
   <div class="hero-right">
-    <img src="https://i.postimg.cc/jwCtv6Xb/Screenshot-20260324-124545-Instagram-(1).jpg" alt="Chef Middleton">
+    <img src="assets/hero.jpg" alt="Chef Middleton">
+    <button class="hero-play" onclick="openVideoModal()" aria-label="Ver la historia">
+      <div class="hero-play-icon">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <div class="hero-play-text">
+        <em class="t" data-es="Ver la Historia" data-en="Watch the Story">Ver la Historia</em>
+        <span class="t" data-es="Reproducir vídeo" data-en="Play video">Reproducir vídeo</span>
+      </div>
+    </button>
     <div class="hero-stat-strip">
       <div class="hstat"><div class="hstat-n">30+</div><div class="hstat-l t" data-es="Años viajando" data-en="Years travelling">Años viajando</div></div>
       <div class="hstat"><div class="hstat-n">Basket</div><div class="hstat-l t" data-es="Jugador profesional" data-en="Professional player">Jugador profesional</div></div>
@@ -436,7 +475,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <!-- HISTORIA -->
 <section class="historia" id="historia">
   <div class="hist-img-wrap rv">
-    <img src="https://i.postimg.cc/k6DqwNcq/Screenshot-20260324-124529-Instagram.jpg" alt="Chef Middleton cocinando">
+    <img src="assets/perfil/Chef_D_Begur-0589.jpg" alt="Chef Middleton cocinando">
     <div class="career-badge">
       <div class="career-badge-top">Basket → Cocina</div>
       <div class="career-badge-main">Darryl Middleton</div>
@@ -482,7 +521,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
   <p class="sec-sub t" data-es="Cada evento se diseña de forma personalizada, cuidando cada detalle para ofrecer una experiencia culinaria única." data-en="Every event is personally designed, with attention to every detail to deliver a unique culinary experience.">Cada evento se diseña de forma personalizada, cuidando cada detalle para ofrecer una experiencia culinaria única.</p>
   <div class="exp-cards rv">
     <div class="exp-card">
-      <div class="exp-img"><img src="https://i.postimg.cc/S2jkVLr4/Screenshot-20260324-124529-Instagram-(1).jpg" alt="Chef en casa"></div>
+      <div class="exp-img"><img src="assets/Emplatado/Chef_D_Begur-0560.jpg" alt="Chef en casa"></div>
       <div class="exp-body">
         <span class="exp-num">01 — <span class="t" data-es="Hogar" data-en="Home">Hogar</span></span>
         <h3 class="t" data-es="Chef privado en tu casa" data-en="Private chef at your home">Chef privado en tu casa</h3>
@@ -490,7 +529,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
       </div>
     </div>
     <div class="exp-card">
-      <div class="exp-img"><img src="https://i.postimg.cc/dkDwnRBv/Screenshot-20260324-124524-Instagram-(1).jpg" alt="Eventos privados"></div>
+      <div class="exp-img"><img src="assets/mesa/Chef_D_Begur-0414.jpg" alt="Eventos privados"></div>
       <div class="exp-body">
         <span class="exp-num">02 — <span class="t" data-es="Eventos" data-en="Events">Eventos</span></span>
         <h3 class="t" data-es="Eventos privados" data-en="Private events">Eventos privados</h3>
@@ -498,7 +537,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
       </div>
     </div>
     <div class="exp-card">
-      <div class="exp-img"><img src="https://i.postimg.cc/dkDwnRBv/Screenshot-20260324-124524-Instagram-(1).jpg" alt="Menú degustación"></div>
+      <div class="exp-img"><img src="assets/Platos/Chef_D_Begur-0569.jpg" alt="Menú degustación"></div>
       <div class="exp-body">
         <span class="exp-num">03 — <span class="t" data-es="Degustación" data-en="Tasting">Degustación</span></span>
         <h3 class="t" data-es="Menú degustación" data-en="Tasting menu">Menú degustación</h3>
@@ -555,11 +594,11 @@ footer{background:var(--ink);padding:56px 52px 32px}
     <h2 class="sec-title t" data-es="La experiencia en imágenes" data-en="The experience in images">La experiencia en imágenes</h2>
   </div>
   <div class="gallery-mosaic rv">
-    <div class="gitem gm1"><img src="https://i.postimg.cc/k6DqwNcq/Screenshot-20260324-124529-Instagram.jpg" alt="Chef Middleton" style="object-position:top"></div>
-    <div class="gitem gm2"><img src="https://i.postimg.cc/dkDwnRBv/Screenshot-20260324-124524-Instagram-(1).jpg" alt="Aperitivo"></div>
-    <div class="gitem gm3"><img src="https://i.postimg.cc/S2jkVLr4/Screenshot-20260324-124529-Instagram-(1).jpg" alt="Mesa" style="object-position:top"></div>
-    <div class="gitem gm4"><img src="https://i.postimg.cc/jwCtv6Xb/Screenshot-20260324-124545-Instagram-(1).jpg" alt="Chef" style="object-position:top"></div>
-    <div class="gitem gm5"><img src="https://i.postimg.cc/dkDwnRBv/Screenshot-20260324-124524-Instagram-(1).jpg" alt="Plato"></div>
+    <div class="gitem gm1"><img src="assets/Platos/Chef_D_Begur-0711.jpg" alt="Plato signature" style="object-position:center"></div>
+    <div class="gitem gm2"><img src="assets/Platos/Chef_D_Begur-0572.jpg" alt="Aperitivo"></div>
+    <div class="gitem gm3"><img src="assets/mesa/Chef_D_Begur-0461.jpg" alt="Mesa" style="object-position:center"></div>
+    <div class="gitem gm4"><img src="assets/Emplatado/Chef_D_Begur-0707.jpg" alt="Chef emplatando" style="object-position:center"></div>
+    <div class="gitem gm5"><img src="assets/Platos/Chef_D_Begur-0646.jpg" alt="Plato"></div>
   </div>
 </div>
 
@@ -567,7 +606,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <section class="exp-mid" id="about">
   <div class="exp-mid-inner">
     <div class="exp-mid-img rv">
-      <img src="https://i.postimg.cc/S2jkVLr4/Screenshot-20260324-124529-Instagram-(1).jpg" alt="La experiencia Middleton">
+      <img src="assets/perfil/Chef_D_Begur-0594.jpg" alt="La experiencia Middleton">
     </div>
     <div class="exp-mid-text rv2">
       <div class="eyebrow" style="justify-content:flex-start"><div class="eyebrow-line" style="background:var(--green2)"></div><span style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700" class="t" data-es="La experiencia" data-en="The experience">La experiencia</span></div>
@@ -603,18 +642,22 @@ footer{background:var(--ink);padding:56px 52px 32px}
       <div class="contact-items">
         <div class="citem"><div class="citem-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><p><a href="tel:+34680679428">(+34) 680 67 94 28</a></p></div>
         <div class="citem"><div class="citem-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="14" y2="12"/></svg></div><p><a href="https://instagram.com/chefdgirona" target="_blank">@chefdgirona</a></p></div>
-        <div class="citem"><div class="citem-icon wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div><p class="t" data-es="WhatsApp disponible" data-en="WhatsApp available">WhatsApp disponible</p></div>
+        <div class="citem"><div class="citem-icon wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div><p><a href="https://wa.me/34680679428" target="_blank" class="t" data-es="WhatsApp disponible" data-en="WhatsApp available">WhatsApp disponible</a></p></div>
       </div>
     </div>
     <div class="rv2">
-      <div class="form-grid">
-        <div><label class="flabel t" data-es="Nombre" data-en="Name">Nombre</label><input type="text" class="finput" placeholder="Tu nombre completo"></div>
-        <div><label class="flabel">Email</label><input type="email" class="finput" placeholder="tu@email.com"></div>
-        <div><label class="flabel t" data-es="Fecha del evento" data-en="Event date">Fecha del evento</label><input type="date" class="finput"></div>
-        <div><label class="flabel t" data-es="Invitados" data-en="Guests">Invitados</label><input type="number" class="finput" placeholder="Máx. 25" min="1" max="25"></div>
-        <div class="ff"><label class="flabel t" data-es="Mensaje" data-en="Message">Mensaje</label><textarea class="finput t" data-es-ph="Cuéntanos sobre tu evento..." data-en-ph="Tell us about your event..." placeholder="Cuéntanos sobre tu evento..."></textarea></div>
-        <div class="ff" style="text-align:center;margin-top:6px"><button class="btn-primary t" data-es="Enviar solicitud" data-en="Send request" style="border:none;cursor:pointer;font-family:'Lato',sans-serif;width:100%">Enviar solicitud</button></div>
-      </div>
+      <form id="contact-form" action="https://formspree.io/f/xreokwrk" method="POST" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" name="_replyto">
+        <div class="form-grid">
+          <div><label class="flabel t" data-es="Nombre" data-en="Name">Nombre</label><input type="text" name="nombre" class="finput" placeholder="Tu nombre completo" required></div>
+          <div><label class="flabel">Email</label><input type="email" name="email" class="finput" placeholder="tu@email.com" required></div>
+          <div><label class="flabel t" data-es="Fecha del evento" data-en="Event date">Fecha del evento</label><input type="date" name="fecha" class="finput"></div>
+          <div><label class="flabel t" data-es="Invitados" data-en="Guests">Invitados</label><input type="number" name="invitados" class="finput" placeholder="Máx. 25" min="1" max="25"></div>
+          <div class="ff"><label class="flabel t" data-es="Mensaje" data-en="Message">Mensaje</label><textarea name="mensaje" class="finput t" data-es-ph="Cuéntanos sobre tu evento..." data-en-ph="Tell us about your event..." placeholder="Cuéntanos sobre tu evento..."></textarea></div>
+          <div class="ff" style="text-align:center;margin-top:6px"><button type="submit" class="btn-primary t" id="form-btn" data-es="Enviar solicitud" data-en="Send request" style="border:none;cursor:pointer;font-family:'Lato',sans-serif;width:100%">Enviar solicitud</button></div>
+        </div>
+        <div id="form-msg" style="display:none;margin-top:20px;padding:14px 18px;font-size:13px;text-align:center;border-radius:2px"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -649,6 +692,19 @@ footer{background:var(--ink);padding:56px 52px 32px}
   </div>
 </footer>
 
+<!-- VIDEO MODAL -->
+<div class="vmodal" id="vmodal" onclick="handleModalClick(event)">
+  <div class="vmodal-inner" id="vmodal-inner">
+    <button class="vmodal-close" onclick="closeVideoModal()">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Fechar
+    </button>
+    <video id="vmodal-video" controls>
+      <source src="assets/video-hero.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
 <!-- WHATSAPP -->
 <a class="wa-btn" href="https://wa.me/34680679428" target="_blank">
   <span class="wa-label t" data-es="Escríbeme por WhatsApp" data-en="Message me on WhatsApp">Escríbeme por WhatsApp</span>
@@ -674,6 +730,46 @@ document.addEventListener('DOMContentLoaded',function(){
     a.addEventListener('click',closeNav);
   });
 });
+function openVideoModal(){
+  const modal=document.getElementById('vmodal');
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('vmodal-video').play();
+}
+function closeVideoModal(){
+  const modal=document.getElementById('vmodal');
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+  const v=document.getElementById('vmodal-video');
+  v.pause();v.currentTime=0;
+}
+function handleModalClick(e){
+  if(e.target===document.getElementById('vmodal'))closeVideoModal();
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoModal();});
+async function handleFormSubmit(e){
+  e.preventDefault();
+  const form=document.getElementById('contact-form');
+  const btn=document.getElementById('form-btn');
+  const msg=document.getElementById('form-msg');
+  btn.disabled=true;btn.style.opacity='0.6';
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){
+      msg.textContent='Gracias, nos pondremos en contacto pronto.';
+      msg.style.background='rgba(156,154,54,0.1)';msg.style.color='var(--green)';msg.style.border='1px solid rgba(156,154,54,0.3)';
+      msg.style.display='block';
+      form.reset();
+    } else {
+      throw new Error();
+    }
+  } catch {
+    msg.textContent='Algo salió mal. Por favor intenta de nuevo.';
+    msg.style.background='rgba(180,60,60,0.08)';msg.style.color='#b43c3c';msg.style.border='1px solid rgba(180,60,60,0.2)';
+    msg.style.display='block';
+  }
+  btn.disabled=false;btn.style.opacity='1';
+}
 function setLang(l,btn){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');

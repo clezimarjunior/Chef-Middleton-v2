@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ChefD Middleton</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -29,7 +30,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Lato',sans-serif;font-we
 nav{position:fixed;top:30px;left:0;right:0;z-index:100;padding:0 52px;display:flex;justify-content:space-between;align-items:center;height:72px;background:rgba(250,250,247,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none}
 /* SVG Logo mark */
-.logo-mark{width:52px;height:52px;flex-shrink:0}
+.logo-mark{width:62px;height:auto;flex-shrink:0;object-fit:contain}
 .logo-text-stack{display:flex;flex-direction:column;gap:1px}
 .logo-text-chef{font-family:'Lato',sans-serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--green);font-weight:700}
 .logo-text-name{font-family:'Playfair Display',serif;font-size:22px;color:var(--ink);letter-spacing:0.5px;line-height:1;font-weight:500}
@@ -41,10 +42,10 @@ nav{position:fixed;top:30px;left:0;right:0;z-index:100;padding:0 52px;display:fl
 .nav-cta:hover{background:var(--ink) !important}
 
 /* HERO */
-.hero{min-height:80vh;display:grid;grid-template-columns:1fr 1fr;margin-top:102px}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:52px 56px 52px 72px;background:var(--bg);position:relative}
+.hero{min-height:80vh;display:flex;margin-top:102px;align-items:center;padding:0 40px;gap:40px;max-width:1500px;margin-left:auto;margin-right:auto}
+.hero-left{flex:1;display:flex;flex-direction:column;justify-content:center;padding:52px 0;background:var(--bg);position:relative}
 /* Big decorative "M" watermark */
-.hero-watermark{position:absolute;bottom:-20px;left:40px;font-family:'Playfair Display',serif;font-size:320px;color:rgba(156,154,54,0.04);line-height:1;pointer-events:none;font-weight:700;user-select:none}
+.hero-watermark{position:absolute;bottom:-20px;left:40px;line-height:1;pointer-events:none;user-select:none}
 .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px}
 .hero-eyebrow-line{width:28px;height:1px;background:var(--green)}
 .hero-eyebrow span{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--green);font-weight:700}
@@ -58,17 +59,18 @@ nav{position:fixed;top:30px;left:0;right:0;z-index:100;padding:0 52px;display:fl
 .btn-primary:hover{background:transparent;color:var(--green)}
 .btn-secondary{padding:14px 36px;border:2px solid var(--border2);color:var(--ink2);background:transparent;text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;transition:all 0.3s;border-radius:2px;display:inline-block}
 .btn-secondary:hover{border-color:var(--green);color:var(--green)}
-.hero-right{position:relative;overflow:hidden;background:var(--ink)}
+.hero-right{position:relative;overflow:hidden;background:#000;flex:0 0 500px;display:flex;align-items:center;justify-content:center}
+.hero-mute{position:absolute;bottom:56px;right:10px;z-index:3;background:rgba(0,0,0,0.5);border:none;cursor:pointer;padding:7px 9px;border-radius:4px;font-size:16px;line-height:1;transition:background 0.2s}
+.hero-mute:hover{background:rgba(0,0,0,0.75)}
 .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 8%;display:block;min-height:400px}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-video-overlay{position:absolute;inset:0;background:rgba(20,18,12,0.45);z-index:1}
+.hero-video{width:100%;height:100%;object-fit:contain;display:block;z-index:0}
 .hero-stat-strip{z-index:2}
 /* Stat badge */
 .hero-stat-strip{position:absolute;bottom:0;left:0;right:0;background:var(--ink);display:flex}
 .hstat{flex:1;padding:16px 20px;border-right:1px solid rgba(255,255,255,0.08);text-align:center}
 .hstat:last-child{border-right:none}
 .hstat-n{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:500;line-height:1}
-.hstat-l{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px}
+.hstat-l{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;white-space:nowrap}
 
 /* BRAND BAND */
 .brand-band{background:var(--green);padding:20px 52px;display:flex;align-items:center;gap:0;overflow:hidden}
@@ -215,24 +217,6 @@ footer{background:var(--ink);padding:56px 52px 32px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px}
 
-/* VIDEO PLAY BUTTON */
-.hero-play{position:absolute;top:24px;left:24px;z-index:2;cursor:pointer;display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.35);background:rgba(20,18,12,0.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:11px 18px 11px 14px;border-radius:2px;text-decoration:none;transition:all 0.3s}
-.hero-play:hover{background:rgba(20,18,12,0.55);border-color:rgba(255,255,255,0.6)}
-.hero-play-icon{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color 0.3s}
-.hero-play-icon svg{width:8px;height:8px;fill:#fff;margin-left:2px}
-.hero-play:hover .hero-play-icon{border-color:#fff}
-.hero-play-text{display:flex;flex-direction:column;gap:1px}
-.hero-play-text em{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:rgba(255,255,255,0.9);line-height:1.2;font-weight:400}
-.hero-play-text span{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-family:'Lato',sans-serif;font-weight:700}
-
-/* VIDEO MODAL */
-.vmodal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,0.88);backdrop-filter:blur(6px)}
-.vmodal.open{display:flex}
-.vmodal-inner{position:relative;width:90vw;max-width:1100px;aspect-ratio:16/9}
-.vmodal-inner video{width:100%;height:100%;display:block;border:1px solid rgba(255,255,255,0.08)}
-.vmodal-close{position:absolute;top:-44px;right:0;background:none;border:none;color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'Lato',sans-serif;font-weight:700;display:flex;align-items:center;gap:8px;transition:color 0.2s}
-.vmodal-close:hover{color:#fff}
-.vmodal-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
 
 /* WHATSAPP */
 .wa-btn{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;align-items:center;gap:0;text-decoration:none}
@@ -379,18 +363,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <nav>
   <a href="#hero" class="logo-wrap">
     <!-- SVG Logo Mark -->
-    <svg class="logo-mark" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="26" cy="26" r="25" stroke="#5C6B3A" stroke-width="1.2"/>
-      <circle cx="26" cy="26" r="20" stroke="#5C6B3A" stroke-width="0.5" stroke-dasharray="2 3"/>
-      <text x="26" y="23" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-size="10" fill="#5C6B3A">Chef</text>
-      <text x="26" y="34" text-anchor="middle" font-family="'Playfair Display',serif" font-size="7" letter-spacing="2" fill="#5C6B3A">MIDDLETON</text>
-      <line x1="14" y1="27" x2="38" y2="27" stroke="#5C6B3A" stroke-width="0.5" opacity="0.4"/>
-    </svg>
-    <div class="logo-text-stack">
-      <span class="logo-text-chef">ChefD</span>
-      <span class="logo-text-name">Middleton</span>
-      <span class="logo-text-sub">Experiencias privadas</span>
-    </div>
+    <img class="logo-mark" src="assets/brand.png" alt="ChefD Middleton">
   </a>
   <div class="nav-right">
     <ul class="nav-links">
@@ -421,31 +394,25 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-left rv">
-    <div class="hero-watermark">M</div>
+    <div class="hero-watermark"><img src="assets/brand.png" alt="" style="width:320px;opacity:0.04;pointer-events:none;user-select:none"></div>
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span class="t" data-es="Experiencias gastronómicas privadas" data-en="Private culinary experiences">Experiencias gastronómicas privadas</span>
+      <span class="t" data-es="Experiencias gastronómicas privadas" data-en="Private culinary experiences — Fine Dining">Experiencias gastronómicas privadas</span>
     </div>
     <h1>ChefD<br><em>Middleton</em></h1>
     <div class="hero-rule"></div>
     <p class="hero-tagline t" data-es="De la cancha a la cocina." data-en="From the court to the kitchen.">De la cancha a la cocina.</p>
-    <p class="hero-text t" data-es="Más de 30 años viajando por el mundo como jugador profesional. Hoy esa vida se transforma en cenas privadas exclusivas con alma mediterránea." data-en="Over 30 years travelling the world as a professional player. Today that life becomes exclusive private dinners with a Mediterranean soul.">Más de 30 años viajando por el mundo como jugador profesional. Hoy esa vida se transforma en cenas privadas exclusivas con alma mediterránea.</p>
+    <p class="hero-text t" data-es="Experiencias gastronómicas privadas en villas y eventos exclusivos. Inspiradas en una vida entre el deporte profesional y la alta cocina." data-en="Private dining experiences for villas and exclusive events. Inspired by a life between professional sport and fine cuisine.">Experiencias gastronómicas privadas en villas y eventos exclusivos. Inspiradas en una vida entre el deporte profesional y la alta cocina.</p>
     <div class="hero-btns">
-      <a href="#reservas" class="btn-primary t" data-es="Reservar experiencia" data-en="Book an experience">Reservar experiencia</a>
-      <a href="#historia" class="btn-secondary t" data-es="Mi historia" data-en="My story">Mi historia</a>
+      <a href="#reservas" class="btn-primary t" data-es="Reservar experiencia" data-en="Book your experience">Reservar experiencia</a>
+      <a href="#historia" class="btn-secondary t" data-es="Descubrir la Historia" data-en="Discover the story">Descubrir la Historia</a>
     </div>
   </div>
   <div class="hero-right">
-    <img src="assets/hero.jpg" alt="Chef Middleton">
-    <button class="hero-play" onclick="openVideoModal()" aria-label="Ver la historia">
-      <div class="hero-play-icon">
-        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
-      <div class="hero-play-text">
-        <em class="t" data-es="Ver la Historia" data-en="Watch the Story">Ver la Historia</em>
-        <span class="t" data-es="Reproducir vídeo" data-en="Play video">Reproducir vídeo</span>
-      </div>
-    </button>
+    <video class="hero-video" id="hero-video" src="assets/video-hero.mp4" autoplay muted loop playsinline poster="assets/hero.jpg">
+      <source src="assets/video-hero.mp4" type="video/mp4">
+    </video>
+    <button class="hero-mute" id="hero-mute" onclick="toggleHeroMute()" aria-label="Toggle sound"><i data-lucide="volume-x" style="width:16px;height:16px;stroke:#fff;fill:none"></i></button>
     <div class="hero-stat-strip">
       <div class="hstat"><div class="hstat-n">30+</div><div class="hstat-l t" data-es="Años viajando" data-en="Years travelling">Años viajando</div></div>
       <div class="hstat"><div class="hstat-n">Basket</div><div class="hstat-l t" data-es="Jugador profesional" data-en="Professional player">Jugador profesional</div></div>
@@ -483,10 +450,10 @@ footer{background:var(--ink);padding:56px 52px 32px}
   </div>
   <div class="hist-text rv2">
     <div class="eyebrow"><div class="eyebrow-line"></div><span class="t" data-es="La historia" data-en="The story">La historia</span><div class="eyebrow-line"></div></div>
-    <h2 class="sec-title t" style="text-align:left;font-size:clamp(24px,2.8vw,40px)" data-es-h="Una vida entre viajes,<br>deporte y cocina." data-en-h="A life of travel,<br>sport and cooking.">Una vida entre viajes,<br>deporte y cocina.</h2>
+    <h2 class="sec-title t" style="text-align:left;font-size:clamp(24px,2.8vw,40px)" data-es-h="Una vida entre élite,<br>viajes y cocina." data-en-h="A life shaped by excellence,<br>travel and cuisine.">Una vida entre élite,<br>viajes y cocina.</h2>
     <div style="width:48px;height:2px;background:var(--green);margin:20px 0 24px"></div>
-    <p class="t" data-es="Durante más de treinta años, Middleton recorrió el mundo como jugador profesional de baloncesto. Cada país visitado fue también un descubrimiento gastronómico." data-en="For more than thirty years, Middleton travelled the world as a professional basketball player. Every country was also a culinary discovery.">Durante más de treinta años, Middleton recorrió el mundo como jugador profesional de baloncesto. Cada país visitado fue también un descubrimiento gastronómico.</p>
-    <p class="t" data-es="Mercados locales, ingredientes únicos, técnicas diferentes. Tradiciones que marcaron su forma de entender la cocina. Hoy ofrece experiencias gastronómicas privadas donde los sabores del mundo se encuentran con el alma mediterránea." data-en="Local markets, unique ingredients, different techniques. Traditions that shaped his approach to cooking. Today he offers private culinary experiences where world flavours meet the Mediterranean soul.">Mercados locales, ingredientes únicos, técnicas diferentes. Tradiciones que marcaron su forma de entender la cocina. Hoy ofrece experiencias gastronómicas privadas donde los sabores del mundo se encuentran con el alma mediterránea.</p>
+    <p class="t" data-es="En 1997, Middleton inició su formación culinaria en Escuela de Hostelería Hofmann, una de las escuelas gastronómicas más prestigiosas de Europa. Ese mismo periodo coincidió con su etapa como jugador profesional en el FC Barcelona, marcando el inicio de una trayectoria definida por la disciplina, la exigencia y la búsqueda constante de la excelencia." data-en="In 1997, Middleton began his culinary training at Escuela de Hostelería Hofmann, one of Europe's most prestigious culinary institutions. At the same time, he was playing professional basketball for FC Barcelona, marking the beginning of a career defined by discipline, performance and international exposure.">En 1997, Middleton inició su formación culinaria en Escuela de Hostelería Hofmann, una de las escuelas gastronómicas más prestigiosas de Europa. Ese mismo periodo coincidió con su etapa como jugador profesional en el FC Barcelona, marcando el inicio de una trayectoria definida por la disciplina, la exigencia y la búsqueda constante de la excelencia.</p>
+    <p class="t" data-es="Durante más de treinta años, el baloncesto lo llevó por distintos países, donde descubrió nuevas culturas, ingredientes y formas de entender la gastronomía. Hoy, toda esa experiencia se traduce en una cocina personal: elegante, cercana y profundamente influenciada por el Mediterráneo." data-en="For over three decades, basketball took him across the world, where he discovered new cultures, ingredients and culinary traditions that now define his cooking style. Today, that journey is translated into a unique culinary approach: elegant, refined and deeply inspired by Mediterranean cuisine.">Durante más de treinta años, el baloncesto lo llevó por distintos países, donde descubrió nuevas culturas, ingredientes y formas de entender la gastronomía. Hoy, toda esa experiencia se traduce en una cocina personal: elegante, cercana y profundamente influenciada por el Mediterráneo.</p>
     <a href="#reservas" class="btn-primary t" style="margin-top:32px" data-es="Reservar experiencia" data-en="Book an experience">Reservar experiencia</a>
   </div>
 </section>
@@ -494,22 +461,22 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <!-- FILOSOFIA -->
 <section class="filosofia" id="filosofia">
   <div class="eyebrow"><div class="eyebrow-line"></div><span class="t" data-es="Filosofía" data-en="Philosophy">Filosofía</span><div class="eyebrow-line"></div></div>
-  <h2 class="sec-title t" data-es="Una cocina con tres pilares" data-en="A cuisine with three pillars">Una cocina con tres pilares</h2>
+  <h2 class="sec-title t" data-es="Una cocina basada en lo esencial" data-en="A cuisine built on essentials">Una cocina basada en lo esencial</h2>
   <div class="pillars rv">
     <div class="pillar">
       <span class="pillar-num">I</span>
       <h3 class="t" data-es="Viajes" data-en="Travel">Viajes</h3>
-      <p class="t" data-es="Cada destino ha aportado nuevas ideas, ingredientes y técnicas. Una cocina abierta, creativa y llena de matices." data-en="Every destination brought new ideas, ingredients and techniques. An open, creative cuisine full of nuance.">Cada destino ha aportado nuevas ideas, ingredientes y técnicas. Una cocina abierta, creativa y llena de matices.</p>
+      <p class="t" data-es="Cada destino ha aportado nuevas ideas, sabores y técnicas." data-en="Every destination has brought new ideas, flavours and techniques.">Cada destino ha aportado nuevas ideas, sabores y técnicas.</p>
     </div>
     <div class="pillar">
       <span class="pillar-num">II</span>
-      <h3 class="t" data-es="Producto" data-en="Produce">Producto</h3>
-      <p class="t" data-es="Ingredientes frescos, sencillos y de calidad. El respeto por el producto es el punto de partida de cada plato." data-en="Fresh, simple, quality ingredients. Respect for the produce is always the starting point.">Ingredientes frescos, sencillos y de calidad. El respeto por el producto es el punto de partida de cada plato.</p>
+      <h3 class="t" data-es="Producto" data-en="Product">Producto</h3>
+      <p class="t" data-es="Ingredientes frescos, de temporada y seleccionados con criterio." data-en="Fresh, seasonal ingredients, carefully selected.">Ingredientes frescos, de temporada y seleccionados con criterio.</p>
     </div>
     <div class="pillar">
       <span class="pillar-num">III</span>
       <h3 class="t" data-es="Experiencia" data-en="Experience">Experiencia</h3>
-      <p class="t" data-es="La cocina como forma de crear momentos memorables. Cada cena es una historia que los invitados recordarán siempre." data-en="Cooking as a way to create memorable moments. Every dinner is a story guests will always remember.">La cocina como forma de crear momentos memorables. Cada cena es una historia que los invitados recordarán siempre.</p>
+      <p class="t" data-es="Cada servicio está pensado para crear un momento único alrededor de la mesa." data-en="Every service is designed to create a unique moment around the table.">Cada servicio está pensado para crear un momento único alrededor de la mesa.</p>
     </div>
   </div>
 </section>
@@ -554,37 +521,142 @@ footer{background:var(--ink);padding:56px 52px 32px}
   <p class="sec-sub t" data-es="Todos los menús se adaptan a los gustos de los invitados y a los productos de temporada." data-en="All menus adapt to guests' preferences and seasonal produce.">Todos los menús se adaptan a los gustos de los invitados y a los productos de temporada.</p>
   <div class="menu-tabs">
     <button class="mtab on" onclick="switchM('sig',this)">Signature</button>
-    <button class="mtab" onclick="switchM('med',this)">Mediterráneo</button>
-    <button class="mtab" onclick="switchM('fus',this)">Fusión</button>
+    <button class="mtab" onclick="switchM('med',this)">Mediterranean</button>
+    <button class="mtab" onclick="switchM('vil',this)">Villa</button>
   </div>
+
+  <!-- MENU 1: Signature -->
   <div class="mcontent on" id="m-sig">
-    <div class="mhead"><h3>Menú Signature ChefD Middleton</h3><p class="t" data-es="Su menú más personal. Una historia contada en platos." data-en="His most personal menu. A story told in dishes.">Su menú más personal. Una historia contada en platos.</p></div>
+    <div class="mhead">
+      <h3 class="t" data-es="Middleton Signature Experience" data-en="Middleton Signature Experience">Middleton Signature Experience</h3>
+      <p class="t" data-es="Un recorrido gastronómico diseñado para sorprender, donde cada plato refleja una combinación de técnica, producto y experiencia internacional." data-en="A gastronomic journey designed to surprise, where each dish reflects a combination of technique, produce and international experience.">Un recorrido gastronómico diseñado para sorprender, donde cada plato refleja una combinación de técnica, producto y experiencia internacional.</p>
+    </div>
     <div class="menu-courses">
-      <div class="course-block"><span class="course-label t" data-es="Aperitivo" data-en="Appetiser">Aperitivo</span><div class="course-items"><span class="course-item">Quesos con mermelada</span><span class="course-item">Jamón</span><span class="course-item">Patatas</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Entrantes" data-en="Starters">Entrantes</span><div class="course-items"><span class="course-item t" data-es="Tartar de salmón, wonton chips" data-en="Salmon tartare, wonton chips">Tartar de salmón, wonton chips</span><span class="course-item t" data-es="Mousse parmentier con mejillón" data-en="Parmentier mousse with mussels">Mousse parmentier con mejillón</span><span class="course-item t" data-es="Arancini negros, gambas de Palamós, pecorino" data-en="Black arancini, Palamós prawns, pecorino">Arancini negros, gambas de Palamós, pecorino</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Primeros" data-en="First">Primeros</span><div class="course-items"><span class="course-item t" data-es="Tartar de tomate y queso de cabra" data-en="Tomato tartare and goat's cheese">Tartar de tomate y queso de cabra</span><span class="course-item t" data-es="Pastel de cangrejo, salsa dulce & picante" data-en="Crab cake, sweet & spicy sauce">Pastel de cangrejo, salsa dulce &amp; picante</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Segundos" data-en="Mains">Segundos</span><div class="course-items"><span class="course-item t" data-es="Canelón de ternera, salsa de parmesano" data-en="Veal cannelloni, parmesan sauce">Canelón de ternera, salsa de parmesano</span><span class="course-item t" data-es="Lubina, parmentier, langostinos y bogavante" data-en="Sea bass, parmentier, prawns and lobster">Lubina, parmentier, langostinos y bogavante</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Postre" data-en="Dessert">Postre</span><div class="course-items"><span class="course-item">Red Velvet Strawberry Cheesecake</span><span class="course-item">Pistachio Cheesecake</span><span class="course-item t" data-es="Coulant de pistacho" data-en="Pistachio coulant">Coulant de pistacho</span><span class="course-item t" data-es="Coulant de cheesecake" data-en="Cheesecake coulant">Coulant de cheesecake</span></div></div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Aperitivo" data-en="Welcome">Aperitivo</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Texturas de queso con membrillo" data-en="Cheese textures with quince">Texturas de queso con membrillo</span>
+          <span class="course-item t" data-es="Jamón ibérico de recebo con crujientes de pan y semillas tostadas" data-en="Iberian recebo ham with crispy bread and toasted seeds">Jamón ibérico de recebo con crujientes de pan y semillas tostadas</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Entrante" data-en="Starter">Entrante</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Tartar de salmón con wonton crujiente" data-en="Salmon tartare with crispy wonton">Tartar de salmón con wonton crujiente</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Primeros" data-en="First courses">Primeros</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Arancini negros con tartar de gamba de Palamós y crema de pecorino" data-en="Black arancini with Palamós prawn tartare and pecorino cream">Arancini negros con tartar de gamba de Palamós y crema de pecorino</span>
+          <span class="course-item t" data-es="Vieiras con quinoa y crema de calabaza" data-en="Scallops with quinoa and pumpkin cream">Vieiras con quinoa y crema de calabaza</span>
+          <span class="course-item t" data-es="Pastel de cangrejo con salsa de tomate dulce y toque picante" data-en="Crab cake with sweet tomato sauce and a hint of spice">Pastel de cangrejo con salsa de tomate dulce y toque picante</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Principal" data-en="Main course">Principal</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Pierna de cordero asada lentamente con verduras y glaseado de albaricoque" data-en="Slow-roasted lamb leg with vegetables and apricot glaze">Pierna de cordero asada lentamente con verduras y glaseado de albaricoque</span>
+          <span class="course-item t" data-es="Lubina con parmentier de patata, langostinos y bogavante" data-en="Sea bass with potato parmentier, prawns and lobster">Lubina con parmentier de patata, langostinos y bogavante</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Postres" data-en="Desserts">Postres</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Tartaleta de mousse de queso con fresas y red velvet" data-en="Cheese mousse tartlet with strawberries and red velvet">Tartaleta de mousse de queso con fresas y red velvet</span>
+          <span class="course-item t" data-es="Coulant de pistacho" data-en="Pistachio coulant">Coulant de pistacho</span>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- MENU 2: Mediterranean -->
   <div class="mcontent" id="m-med">
-    <div class="mhead"><h3 class="t" data-es="Mediterráneo Contemporáneo" data-en="Contemporary Mediterranean">Mediterráneo Contemporáneo</h3><p class="t" data-es="Ingredientes de temporada, pescado fresco, aceite de oliva." data-en="Seasonal ingredients, fresh fish, olive oil.">Ingredientes de temporada, pescado fresco, aceite de oliva.</p></div>
+    <div class="mhead">
+      <h3 class="t" data-es="Mediterranean Essence" data-en="Mediterranean Essence">Mediterranean Essence</h3>
+      <p class="t" data-es="Un recorrido por los sabores del Mediterráneo, equilibrando tradición y frescura con un enfoque actual." data-en="A journey through Mediterranean flavours, balancing tradition and freshness with a contemporary approach.">Un recorrido por los sabores del Mediterráneo, equilibrando tradición y frescura con un enfoque actual.</p>
+    </div>
     <div class="menu-courses">
-      <div class="course-block"><span class="course-label t" data-es="Entrada" data-en="Starter">Entrada</span><div class="course-items"><span class="course-item t" data-es="Burrata cremosa, tomate asado y albahaca" data-en="Creamy burrata, roasted tomato and basil">Burrata cremosa, tomate asado y albahaca</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Principal" data-en="Main">Principal</span><div class="course-items"><span class="course-item t" data-es="Lubina a la parrilla con verduras mediterráneas" data-en="Grilled sea bass with Mediterranean vegetables">Lubina a la parrilla con verduras mediterráneas</span><span class="course-item t" data-es="Risotto de setas con parmesano" data-en="Mushroom risotto with parmesan">Risotto de setas con parmesano</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Postre" data-en="Dessert">Postre</span><div class="course-items"><span class="course-item t" data-es="Tarta de limón con merengue suave" data-en="Lemon tart with soft meringue">Tarta de limón con merengue suave</span></div></div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Aperitivo" data-en="Appetiser">Aperitivo</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Jamón ibérico de recebo con crujientes de pan y semillas tostadas" data-en="Iberian recebo ham with crispy bread and toasted seeds">Jamón ibérico de recebo con crujientes de pan y semillas tostadas</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Entrante" data-en="Starter">Entrante</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Crostini con salmón ahumado" data-en="Crostini with smoked salmon">Crostini con salmón ahumado</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Primeros" data-en="First courses">Primeros</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Ensalada de quinoa mango y aguacate" data-en="Quinoa, mango and avocado salad">Ensalada de quinoa mango y aguacate</span>
+          <span class="course-item t" data-es="Soufflé de mariscos con salsa de pimientos rojos" data-en="Seafood soufflé with red pepper sauce">Soufflé de mariscos con salsa de pimientos rojos</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Principal" data-en="Main course">Principal</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Costilla de ternera estofada con puré de calabaza" data-en="Braised veal rib with pumpkin purée">Costilla de ternera estofada con puré de calabaza</span>
+          <span class="course-item t" data-es="Salmón con maíz y espárragos succotash" data-en="Salmon with corn and asparagus succotash">Salmón con maíz y espárragos succotash</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Postres" data-en="Desserts">Postres</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Tarta de queso con fresas" data-en="Cheesecake with strawberries">Tarta de queso con fresas</span>
+          <span class="course-item t" data-es="Crep con banana Foster" data-en="Crêpe with banana Foster">Crep con banana Foster</span>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="mcontent" id="m-fus">
-    <div class="mhead"><h3 class="t" data-es="Fusión Internacional" data-en="International Fusion">Fusión Internacional</h3><p class="t" data-es="Técnicas y sabores de diferentes culturas en una propuesta creativa." data-en="Techniques and flavours from different cultures in a creative proposal.">Técnicas y sabores de diferentes culturas en una propuesta creativa.</p></div>
+
+  <!-- MENU 3: Villa -->
+  <div class="mcontent" id="m-vil">
+    <div class="mhead">
+      <h3 class="t" data-es="The Villa Experience" data-en="The Villa Experience">The Villa Experience</h3>
+      <p class="t" data-es="Una experiencia pensada para disfrutar sin prisas, en un ambiente cercano y acogedor." data-en="An experience designed to be enjoyed at a relaxed pace, in a warm and welcoming atmosphere.">Una experiencia pensada para disfrutar sin prisas, en un ambiente cercano y acogedor.</p>
+    </div>
     <div class="menu-courses">
-      <div class="course-block"><span class="course-label t" data-es="Entrada" data-en="Starter">Entrada</span><div class="course-items"><span class="course-item t" data-es="Tataki de atún con sésamo y cítricos" data-en="Tuna tataki with sesame and citrus">Tataki de atún con sésamo y cítricos</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Mar" data-en="Sea">Mar</span><div class="course-items"><span class="course-item t" data-es="Pulpo a la brasa con crema de patata" data-en="Grilled octopus with potato cream">Pulpo a la brasa con crema de patata</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Carne" data-en="Meat">Carne</span><div class="course-items"><span class="course-item t" data-es="Cordero con especias aromáticas" data-en="Lamb with aromatic spices">Cordero con especias aromáticas</span></div></div>
-      <div class="course-block"><span class="course-label t" data-es="Postre" data-en="Dessert">Postre</span><div class="course-items"><span class="course-item t" data-es="Chocolate con frutas frescas de temporada" data-en="Chocolate with fresh seasonal fruit">Chocolate con frutas frescas de temporada</span></div></div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Aperitivo" data-en="Appetiser">Aperitivo</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Pincho de tortilla de patatas con pan coca y tomate" data-en="Potato omelette pintxo with coca bread and tomato">Pincho de tortilla de patatas con pan coca y tomate</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Entrante" data-en="Starter">Entrante</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Langostinos a la parrilla con coulis picante de mango y lima" data-en="Grilled prawns with spicy mango and lime coulis">Langostinos a la parrilla con coulis picante de mango y lima</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Primeros" data-en="First courses">Primeros</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Ensalada de langostinos y aguacate" data-en="Prawn and avocado salad">Ensalada de langostinos y aguacate</span>
+          <span class="course-item t" data-es="Arancini de setas con salsa marinera" data-en="Mushroom arancini with marinara sauce">Arancini de setas con salsa marinera</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Principal" data-en="Main course">Principal</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Canelón de ternera con salsa de parmesano" data-en="Veal cannelloni with parmesan sauce">Canelón de ternera con salsa de parmesano</span>
+          <span class="course-item t" data-es="Salmón BBQ con butifarra y patatas" data-en="BBQ salmon with butifarra sausage and potatoes">Salmón BBQ con butifarra y patatas</span>
+        </div>
+      </div>
+      <div class="course-block">
+        <span class="course-label t" data-es="Postres" data-en="Desserts">Postres</span>
+        <div class="course-items">
+          <span class="course-item t" data-es="Coulant de chocolate con helado" data-en="Chocolate coulant with ice cream">Coulant de chocolate con helado</span>
+          <span class="course-item t" data-es="Tarta de red velvet" data-en="Red velvet cake">Tarta de red velvet</span>
+        </div>
+      </div>
     </div>
   </div>
-  <p class="menu-note t" data-es="Los menús se adaptan siempre a los gustos de los invitados y a los productos disponibles en cada temporada." data-en="Menus always adapt to guests' tastes and seasonal produce availability.">Los menús se adaptan siempre a los gustos de los invitados y a los productos disponibles en cada temporada.</p>
+
+  <p class="menu-note t" data-es="Cada menú se adapta a los gustos del cliente y al producto de temporada." data-en="Each menu adapts to the client's preferences and seasonal produce.">Cada menú se adapta a los gustos del cliente y al producto de temporada.</p>
 </section>
 
 <!-- GALLERY -->
@@ -610,14 +682,11 @@ footer{background:var(--ink);padding:56px 52px 32px}
     </div>
     <div class="exp-mid-text rv2">
       <div class="eyebrow" style="justify-content:flex-start"><div class="eyebrow-line" style="background:var(--green2)"></div><span style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700" class="t" data-es="La experiencia" data-en="The experience">La experiencia</span></div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,42px);font-weight:500;color:#fff;line-height:1.2;margin:12px 0 32px">Más que una cena,<br><em style="color:var(--green2)">una experiencia.</em></h2>
-      <div class="checklist">
-        <div class="ci"><div class="ci-dot"></div><p class="t" data-es="Menú completamente personalizado" data-en="Fully personalised menu">Menú completamente personalizado</p></div>
-        <div class="ci"><div class="ci-dot"></div><p class="t" data-es="Ingredientes frescos y de temporada" data-en="Fresh, seasonal ingredients">Ingredientes frescos y de temporada</p></div>
-        <div class="ci"><div class="ci-dot"></div><p class="t" data-es="Preparación en directo ante los invitados" data-en="Live preparation in front of guests">Preparación en directo ante los invitados</p></div>
-        <div class="ci"><div class="ci-dot"></div><p class="t" data-es="Interacción personal con el chef" data-en="Personal interaction with the chef">Interacción personal con el chef</p></div>
-        <div class="ci"><div class="ci-dot"></div><p class="t" data-es="Grupos de hasta 25 personas" data-en="Groups of up to 25 guests">Grupos de hasta 25 personas</p></div>
-        <div class="ci"><div class="ci-dot"></div><p class="t" data-es="Una experiencia gastronómica única e irrepetible" data-en="A unique, unrepeatable culinary experience">Una experiencia gastronómica única e irrepetible</p></div>
+      <h2 class="t" style="font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,42px);font-weight:500;color:#fff;line-height:1.2;margin:12px 0 32px" data-es="Más que una cena" data-en="More than a dinner">Más que una cena</h2>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p class="t" style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.85" data-es="Cada experiencia está pensada como algo más que un servicio gastronómico." data-en="Each experience is designed to go beyond food.">Cada experiencia está pensada como algo más que un servicio gastronómico.</p>
+        <p class="t" style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.85" data-es="Una cocina en directo, cercana y elegante, donde los invitados no solo disfrutan del resultado, sino también del proceso." data-en="A refined and interactive culinary moment, where guests enjoy not only the final result, but also the process itself.">Una cocina en directo, cercana y elegante, donde los invitados no solo disfrutan del resultado, sino también del proceso.</p>
+        <p class="t" style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.85" data-es="Un formato diseñado para villas y espacios privados donde el lujo se encuentra en los detalles." data-en="A concept created for villas and private spaces, where luxury is defined by detail.">Un formato diseñado para villas y espacios privados donde el lujo se encuentra en los detalles.</p>
       </div>
       <a href="#reservas" class="btn-primary t" style="margin-top:36px;border-color:#fff;background:#fff;color:var(--ink)" data-es="Reservar ahora" data-en="Book now">Reservar ahora</a>
     </div>
@@ -667,7 +736,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
   <div class="footer-top">
     <div class="foot-brand">
       <div class="foot-logo-row">
-        <svg width="44" height="44" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/><circle cx="26" cy="26" r="20" stroke="rgba(255,255,255,0.15)" stroke-width="0.5" stroke-dasharray="2 3"/><text x="26" y="23" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-size="10" fill="rgba(255,255,255,0.7)">Chef</text><text x="26" y="34" text-anchor="middle" font-family="'Playfair Display',serif" font-size="7" letter-spacing="2" fill="rgba(255,255,255,0.5)">MIDDLETON</text><line x1="14" y1="27" x2="38" y2="27" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/></svg>
+        <img src="assets/brand.png" alt="ChefD Middleton" style="width:62px;height:auto;object-fit:contain">
         <span class="foot-name">ChefD Middleton</span>
       </div>
       <p class="foot-tagline-big t" data-es="De la cancha a la cocina. Sabores de una vida viajando por el mundo." data-en="From the court to the kitchen. Flavours of a life spent travelling the world.">De la cancha a la cocina. Sabores de una vida viajando por el mundo.</p>
@@ -692,18 +761,6 @@ footer{background:var(--ink);padding:56px 52px 32px}
   </div>
 </footer>
 
-<!-- VIDEO MODAL -->
-<div class="vmodal" id="vmodal" onclick="handleModalClick(event)">
-  <div class="vmodal-inner" id="vmodal-inner">
-    <button class="vmodal-close" onclick="closeVideoModal()">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      Fechar
-    </button>
-    <video id="vmodal-video" controls>
-      <source src="assets/video-hero.mp4" type="video/mp4">
-    </video>
-  </div>
-</div>
 
 <!-- WHATSAPP -->
 <a class="wa-btn" href="https://wa.me/34680679428" target="_blank">
@@ -712,6 +769,16 @@ footer{background:var(--ink);padding:56px 52px 32px}
 </a>
 
 <script>
+function toggleHeroMute(){
+  const v=document.getElementById('hero-video');
+  const btn=document.getElementById('hero-mute');
+  v.muted=!v.muted;
+  btn.innerHTML=v.muted
+    ?'<i data-lucide="volume-x" style="width:16px;height:16px;stroke:#fff;fill:none"></i>'
+    :'<i data-lucide="volume-2" style="width:16px;height:16px;stroke:#fff;fill:none"></i>';
+  lucide.createIcons();
+}
+document.addEventListener('DOMContentLoaded',function(){lucide.createIcons();});
 function closeNav(){
   document.getElementById('ham').classList.remove('open');
   document.getElementById('mob-menu').classList.remove('open');
@@ -730,23 +797,6 @@ document.addEventListener('DOMContentLoaded',function(){
     a.addEventListener('click',closeNav);
   });
 });
-function openVideoModal(){
-  const modal=document.getElementById('vmodal');
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('vmodal-video').play();
-}
-function closeVideoModal(){
-  const modal=document.getElementById('vmodal');
-  modal.classList.remove('open');
-  document.body.style.overflow='';
-  const v=document.getElementById('vmodal-video');
-  v.pause();v.currentTime=0;
-}
-function handleModalClick(e){
-  if(e.target===document.getElementById('vmodal'))closeVideoModal();
-}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoModal();});
 async function handleFormSubmit(e){
   e.preventDefault();
   const form=document.getElementById('contact-form');
@@ -756,7 +806,8 @@ async function handleFormSubmit(e){
   try{
     const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
     if(res.ok){
-      msg.textContent='Gracias, nos pondremos en contacto pronto.';
+      const isEN=document.querySelector('.lang-btn.on')&&document.querySelector('.lang-btn.on').textContent.trim()==='EN';
+      msg.textContent=isEN?"Thank you, we'll be in touch soon.":'Gracias, nos pondremos en contacto pronto.';
       msg.style.background='rgba(156,154,54,0.1)';msg.style.color='var(--green)';msg.style.border='1px solid rgba(156,154,54,0.3)';
       msg.style.display='block';
       form.reset();

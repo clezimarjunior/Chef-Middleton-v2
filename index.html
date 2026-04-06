@@ -270,13 +270,17 @@ footer{background:var(--ink);padding:56px 52px 32px}
   .mob-menu .mob-cta{background:var(--green);color:#fff !important;padding:14px 40px;font-weight:700;border-radius:2px;letter-spacing:2px}
 
   /* HERO */
-  .hero{grid-template-columns:1fr;margin-top:86px;min-height:auto}
+  .hero{flex-direction:column;grid-template-columns:1fr;grid-template-rows:auto auto;margin-top:86px;min-height:auto;padding:0}
   .hero-left{padding:44px 24px 36px}
   .hero h1{font-size:clamp(46px,13vw,68px);letter-spacing:-1px}
   .hero-text{max-width:100%}
   .hero-btns{flex-direction:column;align-items:flex-start}
   .hero-watermark{font-size:180px;left:10px;bottom:-8px}
+  .hero-right{flex:0 0 100%;width:100%;max-width:100%;background:transparent;min-height:unset}
   .hero-right img{min-height:280px}
+  .hero-video{width:100%;height:auto;object-fit:contain}
+  .hero-mute{bottom:12px;right:12px}
+  .hero-stat-strip{flex-wrap:wrap;gap:12px}
   .hstat{padding:12px 8px}
   .hstat-n{font-size:18px}
   .hstat-l{font-size:7px;letter-spacing:1.5px}

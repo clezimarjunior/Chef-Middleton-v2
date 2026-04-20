@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad – Chef Middleton</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #9C9A36;
+      --ink: #1a1a1a;
+      --bg: #F7F5EE;
+      --mid: #555;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 52px;
+      background: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-logo img { width: 48px; height: 48px; }
+
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; }
+    .nav-logo-text .brand { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+    .nav-logo-text .sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); }
+
+    .nav-back {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-back:hover { color: var(--green); border-color: var(--green); }
+
+    /* HERO */
+    .hero {
+      padding: 72px 52px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--green); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .updated {
+      font-size: 12px;
+      color: var(--mid);
+      letter-spacing: 0.5px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 52px 80px;
+    }
+
+    section { margin-top: 48px; }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(156,154,54,0.3);
+    }
+
+    p { margin-bottom: 14px; font-size: 15px; color: #333; }
+
+    ul {
+      margin: 10px 0 14px 20px;
+      font-size: 15px;
+      color: #333;
+    }
+    ul li { margin-bottom: 8px; }
+
+    a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(156,154,54,0.3); }
+    a:hover { border-color: var(--green); }
+
+    strong { font-weight: 400; color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 52px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    footer a { color: rgba(255,255,255,0.5); border-color: transparent; }
+
+    @media (max-width: 640px) {
+      nav, .hero, .content { padding-left: 24px; padding-right: 24px; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/brand.png" alt="Chef Middleton">
+      <div class="nav-logo-text">
+        <div class="brand">Chef Middleton</div>
+        <div class="sub">Experiencias Privadas</div>
+      </div>
+    </a>
+    <a href="index.html" class="nav-back">← Volver</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Legal</div>
+    <h1>Política de<br>Privacidad</h1>
+    <p class="updated">Última actualización: abril de 2026</p>
+  </div>
+
+  <div class="content">
+
+    <section>
+      <h2>1. Responsable del tratamiento</h2>
+      <p>El responsable del tratamiento de sus datos personales es <strong>Chef Middleton</strong>, con sede en Girona, España. Puede contactar con nosotros a través del formulario de contacto disponible en este sitio web o por teléfono en el <strong>(+34) 680 67 94 28</strong>.</p>
+    </section>
+
+    <section>
+      <h2>2. Datos que recopilamos</h2>
+      <p>A través del formulario de contacto de este sitio web, recopilamos únicamente los datos que usted nos proporciona de forma voluntaria:</p>
+      <ul>
+        <li>Nombre</li>
+        <li>Dirección de correo electrónico</li>
+        <li>Fecha del evento</li>
+        <li>Número de invitados</li>
+        <li>Mensaje o consulta</li>
+      </ul>
+      <p>No recopilamos datos sensibles ni información de pago a través de este sitio.</p>
+    </section>
+
+    <section>
+      <h2>3. Finalidad y base jurídica</h2>
+      <p>Sus datos son tratados con la única finalidad de <strong>atender su solicitud de información o reserva</strong> y gestionar la comunicación precontractual. La base jurídica es el interés legítimo y el consentimiento del usuario al enviar el formulario (art. 6.1.a y 6.1.b del RGPD).</p>
+    </section>
+
+    <section>
+      <h2>4. Conservación de los datos</h2>
+      <p>Sus datos se conservarán únicamente durante el tiempo necesario para gestionar su solicitud y, en su caso, durante el período legalmente exigido. Si la comunicación no deriva en una relación contractual, los datos serán eliminados en un plazo máximo de <strong>12 meses</strong>.</p>
+    </section>
+
+    <section>
+      <h2>5. Destinatarios</h2>
+      <p>Sus datos no serán cedidos a terceros, salvo obligación legal. El formulario de contacto utiliza el servicio <strong>Formspree</strong> (formspree.io), con servidores en la Unión Europea, sujeto al RGPD. No realizamos transferencias internacionales de datos fuera del EEE.</p>
+    </section>
+
+    <section>
+      <h2>6. Cookies</h2>
+      <p>Este sitio web utiliza cookies técnicas y de preferencia necesarias para su funcionamiento, así como cookies analíticas y de terceros. Puede gestionar sus preferencias de cookies a través del banner de consentimiento que aparece al acceder al sitio, o en cualquier momento desde la configuración de su navegador.</p>
+    </section>
+
+    <section>
+      <h2>7. Sus derechos</h2>
+      <p>De acuerdo con el RGPD y la normativa española (LOPDGDD), usted tiene derecho a:</p>
+      <ul>
+        <li><strong>Acceder</strong> a sus datos personales</li>
+        <li><strong>Rectificar</strong> datos inexactos</li>
+        <li><strong>Suprimir</strong> sus datos ("derecho al olvido")</li>
+        <li><strong>Limitar</strong> u <strong>oponerse</strong> al tratamiento</li>
+        <li><strong>Portabilidad</strong> de sus datos</li>
+        <li><strong>Retirar el consentimiento</strong> en cualquier momento</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, puede contactar con nosotros a través del formulario de contacto del sitio web. También tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (AEPD) en <a href="https://www.aepd.es" target="_blank">www.aepd.es</a>.</p>
+    </section>
+
+    <section>
+      <h2>8. Seguridad</h2>
+      <p>Adoptamos medidas técnicas y organizativas apropiadas para proteger sus datos personales contra el acceso no autorizado, la pérdida o la destrucción accidental. Este sitio web utiliza cifrado SSL/TLS en todas las comunicaciones.</p>
+    </section>
+
+    <section>
+      <h2>9. Cambios en esta política</h2>
+      <p>Nos reservamos el derecho a actualizar esta política de privacidad para adaptarla a cambios legislativos o de nuestros servicios. Le recomendamos revisarla periódicamente. La fecha de última actualización aparece al inicio de este documento.</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Chef Middleton · Girona, España · <a href="privacidad.html">Política de Privacidad</a></p>
+  </footer>
+
+</body>
+</html>

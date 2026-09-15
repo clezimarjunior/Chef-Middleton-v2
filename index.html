@@ -151,12 +151,15 @@ section{padding:88px 52px}
 /* GALLERY */
 .gallery{padding:0;background:#fff}
 .gallery-header{padding:72px 52px 48px;text-align:center}
-.gallery-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:280px 280px;gap:4px}
+.gallery-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:280px 280px 280px;gap:4px}
 .gm1{grid-column:1/6;grid-row:1/3}
 .gm2{grid-column:6/9;grid-row:1/2}
 .gm3{grid-column:9/13;grid-row:1/2}
 .gm4{grid-column:6/10;grid-row:2/3}
 .gm5{grid-column:10/13;grid-row:2/3}
+.gm6{grid-column:1/5;grid-row:3/4}
+.gm7{grid-column:5/9;grid-row:3/4}
+.gm8{grid-column:9/13;grid-row:3/4}
 .gitem{overflow:hidden;background:var(--bg2)}
 .gitem img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
 .gitem:hover img{transform:scale(1.05)}
@@ -316,12 +319,15 @@ footer{background:var(--ink);padding:56px 52px 32px}
   /* GALLERY */
   .gallery{display:block}
   .gallery-header{padding:48px 24px 32px}
-  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;gap:3px}
+  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px 180px 180px;gap:3px}
   .gm1{grid-column:1/3;grid-row:1/2}
   .gm2{grid-column:1/2;grid-row:2/3}
   .gm3{grid-column:2/3;grid-row:2/3}
   .gm4{grid-column:1/2;grid-row:3/4}
   .gm5{grid-column:2/3;grid-row:3/4}
+  .gm6{grid-column:1/2;grid-row:4/5}
+  .gm7{grid-column:2/3;grid-row:4/5}
+  .gm8{grid-column:1/3;grid-row:5/6}
 
   /* EXP MIDDLETON */
   .exp-mid{padding:56px 24px}
@@ -449,7 +455,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <!-- HISTORIA -->
 <section class="historia" id="historia">
   <div class="hist-img-wrap rv">
-    <img src="assets/perfil/Chef_D_Begur-0589.jpg" alt="Chef Middleton cocinando">
+    <img src="assets/perfil/Chef_D_Begur-0589.jpg" alt="Chef Middleton cocinando" loading="lazy">
     <div class="career-badge">
       <div class="career-badge-top">Basket → Cocina</div>
       <div class="career-badge-main">Darryl Middleton</div>
@@ -495,7 +501,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
   <p class="sec-sub t" data-es="Cada evento se diseña de forma personalizada, cuidando cada detalle para ofrecer una experiencia culinaria única." data-en="Every event is personally designed, with attention to every detail to deliver a unique culinary experience.">Cada evento se diseña de forma personalizada, cuidando cada detalle para ofrecer una experiencia culinaria única.</p>
   <div class="exp-cards rv">
     <div class="exp-card">
-      <div class="exp-img"><img src="assets/chef-privado-en-tu-casa.jpg" alt="Chef en casa"></div>
+      <div class="exp-img"><img src="assets/mesa/roses-mesa-vistas.jpg" alt="Mesa privada en villa con vistas al mar" loading="lazy"></div>
       <div class="exp-body">
         <span class="exp-num">01 — <span class="t" data-es="Hogar" data-en="Home">Hogar</span></span>
         <h3 class="t" data-es="Chef privado en tu casa" data-en="Private chef at your home">Chef privado en tu casa</h3>
@@ -503,7 +509,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
       </div>
     </div>
     <div class="exp-card">
-      <div class="exp-img"><img src="assets/mesa/Chef_D_Begur-0414.jpg" alt="Eventos privados"></div>
+      <div class="exp-img"><img src="assets/mesa/aiguablava-evento.jpg" alt="Eventos privados" loading="lazy"></div>
       <div class="exp-body">
         <span class="exp-num">02 — <span class="t" data-es="Eventos" data-en="Events">Eventos</span></span>
         <h3 class="t" data-es="Eventos privados" data-en="Private events">Eventos privados</h3>
@@ -511,7 +517,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
       </div>
     </div>
     <div class="exp-card">
-      <div class="exp-img"><img src="assets/Platos/Chef_D_Begur-0569.jpg" alt="Menú degustación"></div>
+      <div class="exp-img"><img src="assets/Platos/roses-marisco-flor.jpg" alt="Menú degustación" loading="lazy"></div>
       <div class="exp-body">
         <span class="exp-num">03 — <span class="t" data-es="Degustación" data-en="Tasting">Degustación</span></span>
         <h3 class="t" data-es="Menú degustación" data-en="Tasting menu">Menú degustación</h3>
@@ -673,11 +679,14 @@ footer{background:var(--ink);padding:56px 52px 32px}
     <h2 class="sec-title t" data-es="La experiencia en imágenes" data-en="The experience in images">La experiencia en imágenes</h2>
   </div>
   <div class="gallery-mosaic rv">
-    <div class="gitem gm1"><img src="assets/Platos/Chef_D_Begur-0711.jpg" alt="Plato signature" style="object-position:center"></div>
-    <div class="gitem gm2"><img src="assets/Platos/Chef_D_Begur-0572.jpg" alt="Aperitivo"></div>
-    <div class="gitem gm3"><img src="assets/mesa/Chef_D_Begur-0461.jpg" alt="Mesa" style="object-position:center"></div>
-    <div class="gitem gm4"><img src="assets/Emplatado/Chef_D_Begur-0707.jpg" alt="Chef emplatando" style="object-position:center"></div>
-    <div class="gitem gm5"><img src="assets/Platos/Chef_D_Begur-0646.jpg" alt="Plato"></div>
+    <div class="gitem gm1"><img src="assets/Platos/calanena-vieiras-caviar.jpg" alt="Vieiras con caviar" style="object-position:center" loading="lazy"></div>
+    <div class="gitem gm2"><img src="assets/Emplatado/roses-emplatado-caviar.jpg" alt="Chef emplatando con caviar" loading="lazy"></div>
+    <div class="gitem gm3"><img src="assets/mesa/roses-mesa-arte.jpg" alt="Mesa privada en villa" style="object-position:center" loading="lazy"></div>
+    <div class="gitem gm4"><img src="assets/Platos/calanena-carrillera.jpg" alt="Carrillera con puré de calabaza" style="object-position:center" loading="lazy"></div>
+    <div class="gitem gm5"><img src="assets/Emplatado/roses-emplatado-brioche.jpg" alt="Chef emplatando brioche" loading="lazy"></div>
+    <div class="gitem gm6"><img src="assets/Platos/calanena-gambas.jpg" alt="Gambas con salsa de coco y curry" loading="lazy"></div>
+    <div class="gitem gm7"><img src="assets/Platos/calanena-canape.jpg" alt="Canapés de ternera" loading="lazy"></div>
+    <div class="gitem gm8"><img src="assets/Platos/roses-tapas.jpg" alt="Selección de tapas mediterráneas" loading="lazy"></div>
   </div>
 </div>
 
@@ -685,7 +694,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
 <section class="exp-mid" id="about">
   <div class="exp-mid-inner">
     <div class="exp-mid-img rv">
-      <img src="assets/perfil/Chef_D_Begur-0594.jpg" alt="La experiencia Middleton">
+      <img src="assets/perfil/Chef_D_Begur-0594.jpg" alt="La experiencia Middleton" loading="lazy">
     </div>
     <div class="exp-mid-text rv2">
       <div class="eyebrow" style="justify-content:flex-start"><div class="eyebrow-line" style="background:var(--green2)"></div><span style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700" class="t" data-es="La experiencia" data-en="The experience">La experiencia</span></div>
@@ -725,10 +734,17 @@ footer{background:var(--ink);padding:56px 52px 32px}
       <form id="contact-form" action="https://formspree.io/f/xreokwrk" method="POST" onsubmit="handleFormSubmit(event)">
         <input type="hidden" name="_replyto">
         <div class="form-grid">
-          <div><label class="flabel t" data-es="Nombre" data-en="Name">Nombre</label><input type="text" name="nombre" class="finput" placeholder="Tu nombre completo" required></div>
+          <div><label class="flabel t" data-es="Nombre" data-en="Name">Nombre</label><input type="text" name="nombre" class="finput t" data-es-ph="Tu nombre completo" data-en-ph="Your full name" placeholder="Tu nombre completo" required></div>
           <div><label class="flabel">Email</label><input type="email" name="email" class="finput" placeholder="tu@email.com" required></div>
-          <div><label class="flabel t" data-es="Fecha del evento" data-en="Event date">Fecha del evento</label><input type="date" name="fecha" class="finput"></div>
-          <div><label class="flabel t" data-es="Invitados" data-en="Guests">Invitados</label><input type="number" name="invitados" class="finput" placeholder="Máx. 25" min="1" max="25"></div>
+          <div><label class="flabel t" data-es="Teléfono" data-en="Phone">Teléfono</label><input type="tel" name="telefono" class="finput" placeholder="+34 600 000 000" required></div>
+          <div><label class="flabel t" data-es="País" data-en="Country">País</label><input type="text" name="pais" class="finput t" list="country-list" data-es-ph="Tu país de residencia" data-en-ph="Your country of residence" placeholder="Tu país de residencia" required>
+            <datalist id="country-list">
+              <option value="España"><option value="Francia"><option value="Reino Unido"><option value="Alemania"><option value="Italia"><option value="Países Bajos"><option value="Bélgica"><option value="Suiza"><option value="Portugal"><option value="Irlanda"><option value="Suecia"><option value="Noruega"><option value="Estados Unidos"><option value="Canadá"><option value="Australia"><option value="Emiratos Árabes Unidos">
+            </datalist>
+          </div>
+          <div><label class="flabel t" data-es="Adultos" data-en="Adults">Adultos</label><input type="number" name="adultos" class="finput t" data-es-ph="Máx. 25" data-en-ph="Max. 25" placeholder="Máx. 25" min="1" max="25"></div>
+          <div><label class="flabel t" data-es="Niños" data-en="Children">Niños</label><input type="number" name="ninos" class="finput" placeholder="0" min="0" max="25"></div>
+          <div class="ff"><label class="flabel t" data-es="Fecha del evento" data-en="Event date">Fecha del evento</label><input type="date" name="fecha" class="finput"></div>
           <div class="ff"><label class="flabel t" data-es="Mensaje" data-en="Message">Mensaje</label><textarea name="mensaje" class="finput t" data-es-ph="Cuéntanos sobre tu evento..." data-en-ph="Tell us about your event..." placeholder="Cuéntanos sobre tu evento..."></textarea></div>
           <div class="ff" style="text-align:center;margin-top:6px"><button type="submit" class="btn-primary t" id="form-btn" data-es="Enviar solicitud" data-en="Send request" style="border:none;cursor:pointer;font-family:'Lato',sans-serif;width:100%">Enviar solicitud</button></div>
         </div>
@@ -754,6 +770,7 @@ footer{background:var(--ink);padding:56px 52px 32px}
       <a href="#experiencias" class="t" data-es="Experiencias" data-en="Experiences">Experiencias</a>
       <a href="#menus" class="t" data-es="Menú" data-en="Menu">Menú</a>
       <a href="#reservas" class="t" data-es="Reservar" data-en="Book">Reservar</a>
+      <a href="review.html" class="t" data-es="Danos tu opinión" data-en="Leave a review">Danos tu opinión</a>
     </div>
     <div class="foot-col">
       <h4 class="t" data-es="Contacto" data-en="Contact">Contacto</h4>

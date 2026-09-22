@@ -150,6 +150,7 @@ function setLang(l,btn){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.documentElement.lang = l;
+  try{localStorage.setItem('cm_lang',l);}catch(e){}
   document.querySelectorAll('.t').forEach(el=>{
     if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
       const ph=el.dataset[l+'Ph'];if(ph!==undefined)el.placeholder=ph;
@@ -161,6 +162,20 @@ function setLang(l,btn){
     }
   });
 }
+function initLang(){
+  var saved=null;
+  try{saved=localStorage.getItem('cm_lang');}catch(e){}
+  var lang=saved;
+  if(!lang){
+    var nav=(navigator.language||navigator.userLanguage||'es').toLowerCase();
+    lang=nav.indexOf('es')===0?'es':'en';
+  }
+  if(lang==='en'){
+    var btns=document.querySelectorAll('.lang-btn');
+    if(btns[1])setLang('en',btns[1]);
+  }
+}
+document.addEventListener('DOMContentLoaded',initLang);
 async function handleReviewSubmit(e){
   e.preventDefault();
   const form=document.getElementById('review-form');

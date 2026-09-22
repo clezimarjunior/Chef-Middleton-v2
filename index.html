@@ -168,9 +168,31 @@ section{padding:88px 52px}
 .gm11{grid-column:9/13;grid-row:4/5}
 .gm12{grid-column:1/9;grid-row:5/6}
 .gm13{grid-column:9/13;grid-row:5/6}
-.gitem{overflow:hidden;background:var(--bg2)}
+.gitem{overflow:hidden;background:var(--bg2);cursor:pointer}
 .gitem img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
 .gitem:hover img{transform:scale(1.05)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:10000;background:rgba(10,9,6,0.95);display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(88vw,1100px);max-height:82vh;object-fit:contain;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.lb-close{position:absolute;top:24px;right:28px;background:none;border:none;cursor:pointer;width:44px;height:44px;z-index:2}
+.lb-close span{display:block;width:22px;height:2px;background:#fff;border-radius:1px;position:absolute;top:50%;left:50%;margin:-1px 0 0 -11px}
+.lb-close span:nth-child(1){transform:rotate(45deg)}
+.lb-close span:nth-child(2){transform:rotate(-45deg)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s;z-index:2}
+.lb-nav:hover{background:rgba(255,255,255,0.18)}
+.lb-prev{left:20px}
+.lb-next{right:20px}
+.lb-nav svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+.lb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:2px}
+@media(max-width:768px){
+  .lb-nav{width:42px;height:42px}
+  .lb-prev{left:8px}
+  .lb-next{right:8px}
+  .lb-close{top:14px;right:14px}
+  .lightbox img{max-height:74vh}
+}
 
 /* EXP MIDDLETON */
 .exp-mid{background:var(--ink);padding:88px 52px}
@@ -733,6 +755,15 @@ footer{background:var(--ink);padding:56px 52px 32px}
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="lbBackdropClick(event)">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar"><span></span><span></span></button>
+  <div class="lb-nav lb-prev" onclick="lbPrev(event)" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></div>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lb-nav lb-next" onclick="lbNext(event)" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
 <!-- EXP MIDDLETON - dark section -->
 <section class="exp-mid" id="about">
   <div class="exp-mid-inner">
@@ -922,6 +953,55 @@ function initLang(){
   }
 }
 document.addEventListener('DOMContentLoaded',initLang);
+
+/* LIGHTBOX */
+let lbImages=[];
+let lbIndex=0;
+function initLightbox(){
+  const items=document.querySelectorAll('.gallery-mosaic .gitem img');
+  lbImages=Array.from(items).map(img=>({src:img.getAttribute('src'),alt:img.getAttribute('alt')||''}));
+  items.forEach((img,i)=>{
+    img.closest('.gitem').addEventListener('click',()=>openLightbox(i));
+  });
+}
+function openLightbox(i){
+  lbIndex=i;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbBackdropClick(e){
+  if(e.target.id==='lightbox')closeLightbox();
+}
+function lbNext(e){
+  if(e)e.stopPropagation();
+  lbIndex=(lbIndex+1)%lbImages.length;
+  updateLightbox();
+}
+function lbPrev(e){
+  if(e)e.stopPropagation();
+  lbIndex=(lbIndex-1+lbImages.length)%lbImages.length;
+  updateLightbox();
+}
+function updateLightbox(){
+  const item=lbImages[lbIndex];
+  const imgEl=document.getElementById('lightbox-img');
+  imgEl.src=item.src;
+  imgEl.alt=item.alt;
+  document.getElementById('lb-counter').textContent=(lbIndex+1)+' / '+lbImages.length;
+}
+document.addEventListener('DOMContentLoaded',initLightbox);
+document.addEventListener('keydown',function(e){
+  const lb=document.getElementById('lightbox');
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowRight')lbNext();
+  if(e.key==='ArrowLeft')lbPrev();
+});
 function switchM(id,btn){
   document.querySelectorAll('.mcontent').forEach(e=>e.classList.remove('on'));
   document.querySelectorAll('.mtab').forEach(e=>e.classList.remove('on'));
